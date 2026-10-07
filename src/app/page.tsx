@@ -69,8 +69,8 @@ export default function HomePage() {
             <h2 id="experts-title" className="h2">The Right Experts to Solve Your Tax Challenges</h2>
             <p>
               We specialize in providing expert tax solutions tailored to your unique financial situation. With
-              trusted, certified, and experienced professionals, we navigate complex tax laws, maximize savings, and
-              ensure compliance.
+              trusted, certified, and experienced professionals, we navigate complex tax laws, maximize savings,
+              ensure compliance, and support the financial growth of your business.
             </p>
           </div>
           <Stats />

@@ -30,7 +30,7 @@ export default function PageBanner({
 
   return (
     <section className="page-banner">
-      <Image src={image} alt="" fill priority sizes="100vw" className="page-banner__bg" />
+      <Image src={image} alt={`${title} – AIONIOUS Management Solutions, Thiruvalla`}fill priority sizes="100vw" className="page-banner__bg" />
       <div className="container page-banner__inner">
         <h1>{title}</h1>
         {subtitle && <p>{subtitle}</p>}

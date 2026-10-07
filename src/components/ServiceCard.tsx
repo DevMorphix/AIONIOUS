@@ -10,7 +10,7 @@ export default function ServiceCard({ service, headingLevel = 3 }: { service: Se
       <Link href={`/services/${service.slug}`} className="service-card__media" tabIndex={-1} aria-hidden="true">
         <Image
           src={service.image}
-          alt=""
+          alt={`${service.title} service by AIONIOUS Management Solutions`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
         />

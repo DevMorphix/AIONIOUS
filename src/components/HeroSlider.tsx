@@ -33,7 +33,7 @@ export default function HeroSlider() {
         <Image
           key={s.src}
           src={s.src}
-          alt={i === 0 ? s.alt : ""}
+          alt={s.alt}
           fill
           priority={i === 0}
           sizes="100vw"

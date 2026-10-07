@@ -5,7 +5,7 @@ import { ArrowUpRight } from "./Icons";
 export default function CtaBand() {
   return (
     <section className="cta" aria-labelledby="cta-title">
-      <Image src="/images/cta-bg.jpg" alt="" fill sizes="100vw" className="cta__bg" />
+      <Image src="/images/cta-bg.jpg" alt="Financial analytics dashboard used for business planning"fill sizes="100vw" className="cta__bg" />
       <div className="container cta__inner">
         <div>
           <h2 id="cta-title">Ready to Take the Next Step?</h2>

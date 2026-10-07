@@ -22,7 +22,7 @@ export default function Testimonials() {
 
   return (
     <section className="section testimonials full-height" aria-labelledby="testimonials-title">
-      <Image src="/images/testimonial-bg.jpg" alt="" fill sizes="100vw" className="testimonials__bg" />
+      <Image src="/images/testimonial-bg.jpg" alt="Modern office where AIONIOUS meets clients"fill sizes="100vw" className="testimonials__bg" />
       <div className="container testimonials__inner">
         <header className="section-head section-head--center">
           <SectionTag>Testimonials</SectionTag>
