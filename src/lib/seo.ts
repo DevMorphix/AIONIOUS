@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import { site } from "./site";
 
-export const HOME_TITLE = "Tax & Accounting Services in Thiruvalla, Kerala | AIONIOUS";
+export const HOME_TITLE = "Accounting, Tax & GST Services in Thiruvalla | AIONIOUS";
 
-const DEFAULT_IMAGE = { url: "/images/hero-2.jpg", width: 1920, height: 1280, alt: "AIONIOUS financial advisors with a client" };
+const DEFAULT_IMAGE = {
+  url: "/images/og-image.jpg",
+  width: 1200,
+  height: 630,
+  alt: "AIONIOUS Management Solutions – Your Financial Growth, Our Expertise",
+};
 
 // Builds a complete, per-page metadata set. Next.js replaces (not merges) nested
 // objects like openGraph, so every page must supply all of these fields together.

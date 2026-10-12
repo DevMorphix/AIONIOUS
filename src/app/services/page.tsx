@@ -4,13 +4,13 @@ import SectionTag from "@/components/SectionTag";
 import ServiceCard from "@/components/ServiceCard";
 import WhyChoose from "@/components/WhyChoose";
 import CtaBand from "@/components/CtaBand";
-import { services } from "@/lib/site";
+import { serviceBySlug, serviceCategories } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Tax, VAT & Accounting Services in Kerala",
+  title: "Accounting, Tax, GST & UAE Corporate Services",
   description:
-    "Corporate tax, VAT registration and filing, transfer pricing, bookkeeping, financial reporting and UAE company setup from AIONIOUS in Thiruvalla.",
+    "Bookkeeping, financial statements, income tax returns, GST registration and filing, plus UAE corporate tax and VAT services from AIONIOUS, Thiruvalla.",
   path: "/services",
   image: { url: "/images/corporate-tax.jpg", alt: "Tax documents and calculator" },
 });
@@ -20,22 +20,45 @@ export default function ServicesPage() {
     <>
       <PageBanner
         title="Our Services"
-        subtitle="Complete tax, accounting and advisory solutions under one roof."
+        subtitle="Accounting, tax, GST and UAE corporate services – all under one roof."
         crumbs={[{ name: "Services", href: "/services" }]}
       />
-      <section className="section services-light" aria-labelledby="all-services-title">
+
+      <nav className="category-nav" aria-label="Service categories">
         <div className="container">
-          <header className="section-head section-head--center">
-            <SectionTag>What We Offer</SectionTag>
-            <h2 id="all-services-title" className="h2">Explore Our Professional Services</h2>
-          </header>
-          <div className="services-grid">
-            {services.map((s) => (
-              <ServiceCard key={s.slug} service={s} />
+          <ul>
+            {serviceCategories.map((c) => (
+              <li key={c.key}>
+                <a href={`#${c.key}`}>{c.title}</a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-      </section>
+      </nav>
+
+      {serviceCategories.map((c, i) => (
+        <section
+          key={c.key}
+          id={c.key}
+          className={`section service-group${i % 2 === 1 ? " services-light" : ""}`}
+          aria-labelledby={`${c.key}-title`}
+        >
+          <div className="container">
+            <header className="section-head section-head--center">
+              <SectionTag>{`0${i + 1} · What We Offer`}</SectionTag>
+              <h2 id={`${c.key}-title`} className="h2">{c.title}</h2>
+              <p className="section-intro">{c.intro}</p>
+            </header>
+            <div className="services-grid">
+              {c.slugs.map((slug) => {
+                const s = serviceBySlug(slug);
+                return s ? <ServiceCard key={slug} service={s} /> : null;
+              })}
+            </div>
+          </div>
+        </section>
+      ))}
+
       <WhyChoose />
       <CtaBand />
     </>

@@ -36,6 +36,7 @@ export default function HeroSlider() {
           alt={s.alt}
           fill
           priority={i === 0}
+          fetchPriority={i === 0 ? "high" : "low"}
           sizes="100vw"
           className={`hero__bg${i === active ? " is-active" : ""}`}
         />
@@ -48,7 +49,7 @@ export default function HeroSlider() {
           <br /> Our Expertise.
         </h1>
         <p className="hero__lead">
-          Empowering Entrepreneurs and Businesses with Trusted Tax, Accounting, and Advisory Services.
+          Empowering Entrepreneurs and Businesses with Trusted Accounting, Tax &amp; GST, and UAE Corporate Services.
         </p>
         <div className="hero__actions">
           <Link href="/contact" className="btn btn--dark">

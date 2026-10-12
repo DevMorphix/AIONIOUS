@@ -306,15 +306,43 @@ button { font: inherit; cursor: pointer; }
 .service-detail { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
 .service-detail__img { width: 100%; border-radius: var(--radius); margin-bottom: 30px; aspect-ratio: 16 / 9; object-fit: cover; }
 .service-detail__main h3 { font-size: 18px; margin-top: 24px; }
-.service-detail__aside { display: grid; gap: 22px; position: sticky; top: calc(var(--header-h) + 20px); }
-.aside-card { background: var(--soft); border-radius: var(--radius); padding: 24px; }
-.aside-card h2 { font-size: 17px; margin-bottom: 14px; }
-.aside-card li a { display: block; padding: 10px 14px; margin-bottom: 6px; background: #fff; border-radius: 6px; font-size: 13px; font-weight: 500; color: var(--ink); transition: background .2s, color .2s; }
+.service-detail__aside { display: grid; gap: 18px; }
+.service-detail__main .lead { font-size: 17px; font-weight: 500; color: var(--ink); }
+.aside-card { background: var(--soft); border-radius: var(--radius); padding: 20px 22px; }
+.aside-card h2 { font-size: 15px; margin-bottom: 12px; }
+.aside-card li a { display: block; padding: 9px 14px; margin-bottom: 6px; background: #fff; border-radius: 6px; font-size: 13px; font-weight: 500; color: var(--ink); transition: background .2s, color .2s; }
 .aside-card li a:hover, .aside-card li a.is-active { background: var(--blue); color: #fff; }
 .aside-card--dark { background: var(--navy); color: #cfd6e2; }
 .aside-card--dark h2 { color: #fff; }
 .aside-card--dark p { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-bottom: 8px; }
 .aside-card--dark a:hover { color: #9cc7ee; }
+
+/* ---------- About: what we do ---------- */
+.what-we-do__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.what-we-do__card {
+  border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: var(--radius);
+  padding: 28px; background: #fff; transition: transform .25s, box-shadow .25s;
+}
+.what-we-do__card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.what-we-do__card h3 { font-size: 19px; }
+.what-we-do__card p { font-size: 13.5px; }
+.what-we-do__card li a { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 13.5px; font-weight: 500; color: var(--ink); }
+.what-we-do__card li a svg { color: var(--blue); flex-shrink: 0; }
+.what-we-do__card li a:hover { color: var(--blue); }
+@media (max-width: 900px) { .what-we-do__grid { grid-template-columns: 1fr; } }
+
+/* ---------- Service categories ---------- */
+.section-intro { max-width: 680px; margin: 10px auto 0; font-size: 15px; }
+.category-nav { position: sticky; top: var(--header-h); z-index: 50; background: #fff; border-bottom: 1px solid var(--line); }
+.category-nav ul { display: flex; justify-content: center; gap: 8px; padding: 14px 0; overflow-x: auto; scrollbar-width: none; }
+.category-nav ul::-webkit-scrollbar { display: none; }
+.category-nav a {
+  display: block; white-space: nowrap; padding: 9px 18px; border-radius: 30px; border: 1px solid var(--line);
+  font-size: 13px; font-weight: 600; color: var(--ink); transition: background .2s, color .2s, border-color .2s;
+}
+.category-nav a:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+.service-group { scroll-margin-top: calc(var(--header-h) + 64px); }
+@media (max-width: 640px) { .category-nav ul { justify-content: flex-start; } }
 
 /* ---------- Contact ---------- */
 .contact { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
@@ -453,7 +481,9 @@ button { font: inherit; cursor: pointer; }
 .reveal-ready .about__media.reveal.is-visible, .reveal-ready .about__text.reveal.is-visible { transform: none; }
 /* Cards keep their own hover transform once revealed */
 .reveal-ready .reveal.is-visible.service-card:hover { transform: translateY(-6px); }
-.reveal-ready .reveal.is-visible.stat:hover, .reveal-ready .reveal.is-visible.vm__card:hover { transform: translateY(-4px); }
+.reveal-ready .reveal.is-visible.stat:hover,
+.reveal-ready .reveal.is-visible.vm__card:hover,
+.reveal-ready .reveal.is-visible.what-we-do__card:hover { transform: translateY(-4px); }
 
 /* Hero entrance */
 .hero__title, .hero__lead, .hero__actions { animation: fade-up 1s cubic-bezier(.2, .65, .3, 1) both; }

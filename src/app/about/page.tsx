@@ -7,7 +7,7 @@ import Stats from "@/components/Stats";
 import WhyChoose from "@/components/WhyChoose";
 import CtaBand from "@/components/CtaBand";
 import { ArrowUpRight, BarChart, Check } from "@/components/Icons";
-import { site } from "@/lib/site";
+import { serviceBySlug, serviceCategories, site } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -30,7 +30,7 @@ export default function AboutPage() {
     <>
       <PageBanner
         title="About Us"
-        subtitle="Trusted tax, accounting and advisory partners for growing businesses."
+        subtitle="Your trusted partner for accounting, tax, GST and UAE corporate services."
         crumbs={[{ name: "About Us", href: "/about" }]}
       />
 
@@ -52,14 +52,43 @@ export default function AboutPage() {
             <p className="pill">Established in {site.founded}.</p>
             <p>
               AIONIOUS Management Solutions is a professional firm based at {site.address.building},{" "}
-              {site.address.street}, {site.address.locality}, {site.address.city}, Kerala. We provide tax,
-              accounting, VAT, corporate tax, transfer pricing and business advisory services to individuals,
-              startups and established businesses in India, with dedicated support for company setup in the UAE.
+              {site.address.street}, {site.address.locality}, {site.address.city}, Kerala. We keep the books,
+              file the returns and handle the compliance for individuals, startups and established businesses –
+              from accounting and income tax to GST in India, and corporate tax and VAT in the UAE.
             </p>
             <p>
               Our team of certified specialists combines deep regulatory knowledge with a personal, responsive
               approach, so every client knows exactly where they stand.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section what-we-do" aria-labelledby="what-title">
+        <div className="container">
+          <header className="section-head section-head--center">
+            <SectionTag>What We Do</SectionTag>
+            <h2 id="what-title" className="h2">Three Areas. One Trusted Partner.</h2>
+          </header>
+          <div className="what-we-do__grid">
+            {serviceCategories.map((c) => (
+              <article key={c.key} className="what-we-do__card">
+                <h3>{c.title}</h3>
+                <p>{c.intro}</p>
+                <ul>
+                  {c.slugs.map((slug) => {
+                    const s = serviceBySlug(slug)!;
+                    return (
+                      <li key={slug}>
+                        <Link href={`/services/${s.slug}`}>
+                          <Check width={14} height={14} /> {s.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -79,8 +108,8 @@ export default function AboutPage() {
             <h2>Our Mission</h2>
             <p>
               To provide clients with valuable financial insights, ensure regulatory compliance, and help
-              entrepreneurs and firms achieve their financial goals through high-quality auditing, accounting, tax
-              planning, and business advisory services.
+              entrepreneurs and firms achieve their financial goals through high-quality accounting, income tax,
+              GST and UAE corporate tax services.
             </p>
           </article>
           <article className="vm__card">

@@ -17,6 +17,7 @@ const REVEAL_SELECTORS = [
   ".cta__inner > *",
   ".testimonials__slider",
   ".vm__card",
+  ".what-we-do__card",
   ".info-card",
   ".contact__info > .h2",
   ".contact__form-wrap",
@@ -49,19 +50,39 @@ export default function Motion() {
       el.classList.add("reveal");
     });
 
+    const pending = new Set(els);
+    const show = (el: Element) => {
+      el.classList.add("is-visible");
+      pending.delete(el as HTMLElement);
+      io.unobserve(el);
+    };
+
     const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-visible");
-            io.unobserve(e.target);
-          }
-        });
-      },
+      (entries) => entries.forEach((e) => e.isIntersecting && show(e.target)),
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
     els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+
+    // Safety net for very fast scrolling: anything whose top is already above the
+    // bottom of the viewport is revealed, so content can never stay hidden.
+    let raf = 0;
+    const sweep = () => {
+      raf = 0;
+      pending.forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight) show(el);
+      });
+      if (!pending.size) window.removeEventListener("scroll", onScroll);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(sweep);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
   }, [pathname]);
 
   // Scroll progress bar + back-to-top visibility.

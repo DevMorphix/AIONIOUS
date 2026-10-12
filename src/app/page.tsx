@@ -53,7 +53,7 @@ export default function HomePage() {
             <p>
               <strong>Mission</strong> is to provide clients with valuable financial insights, ensure regulatory
               compliance, and help the entrepreneurs and firms to achieve their financial goals through high-quality
-              auditing, accounting, tax planning, and business advisory services.
+              accounting, income tax, GST and UAE corporate tax services.
             </p>
             <Link href="/about" className="btn btn--primary btn--sm">
               Know More <ArrowUpRight width={14} height={14} />
