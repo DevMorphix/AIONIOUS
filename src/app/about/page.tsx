@@ -13,7 +13,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "About Us – Tax & Accounting Firm in Thiruvalla",
   description:
-    "Meet AIONIOUS Management Solutions, a Thiruvalla tax and accounting firm established in June 2025. Read our vision, mission and values.",
+    "Meet AIONIOUS Management Solutions, a Thiruvalla firm for accounting, income tax, GST and UAE corporate services. Read our vision, mission and values.",
   path: "/about",
   image: { url: "/images/about.jpg", alt: "AIONIOUS team in a client strategy meeting" },
 });
@@ -49,10 +49,10 @@ export default function AboutPage() {
           <div className="about__text">
             <SectionTag>About Aionious</SectionTag>
             <h2 id="who-title" className="h2">Who We Are</h2>
-            <p className="pill">Established in {site.founded}.</p>
             <p>
               AIONIOUS Management Solutions is a professional firm based at {site.address.building},{" "}
-              {site.address.street}, {site.address.locality}, {site.address.city}, Kerala. We keep the books,
+              {site.address.street}, {site.address.locality}, {site.address.city} (Tiruvalla), in{" "}
+              {site.address.district} district, Kerala. We keep the books,
               file the returns and handle the compliance for individuals, startups and established businesses –
               from accounting and income tax to GST in India, and corporate tax and VAT in the UAE.
             </p>

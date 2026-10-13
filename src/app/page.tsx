@@ -42,7 +42,6 @@ export default function HomePage() {
           <div className="about__text">
             <SectionTag>About Aionious</SectionTag>
             <h2 id="about-title" className="h2">Who We Are</h2>
-            <p className="pill">Established in {site.founded}.</p>
             <p>
               <strong>Vision</strong> is to be a highly respected and trusted professional firm known for its quality
               services and commitment to client success. To be regionally recognized as the accounting firm of choice

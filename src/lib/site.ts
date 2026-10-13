@@ -4,9 +4,9 @@ export const site = {
   tagline: "Your Financial Growth, Our Expertise.",
   description:
     "Accounting, income tax, GST and UAE corporate tax & VAT services for individuals and businesses, from our office in Thiruvalla, Kerala.",
-  url: "https://www.aioniousms.com",
-  founded: "June 2025",
-  foundedISO: "2025-06",
+  // The live address of the site. Set NEXT_PUBLIC_SITE_URL in Vercel if the site runs on a
+  // different domain, so canonical links, the sitemap and structured data match the real URL.
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.aioniousms.com").replace(/\/+$/, ""),
   email: "aioniousmanagement@gmail.com",
   landline: "0469-2663213",
   phones: ["+91 98472 73213", "+91 97479 83213"],
@@ -15,15 +15,18 @@ export const site = {
     street: "T K Road",
     locality: "Eraviperoor",
     city: "Thiruvalla",
+    district: "Pathanamthitta",
     region: "Kerala",
     postalCode: "689542",
     country: "India",
     countryCode: "IN",
   },
+  // Paste the full profile URLs here (e.g. "https://www.facebook.com/aionious").
+  // Empty links are hidden on the site and left out of Google's structured data.
   social: {
-    facebook: "https://www.facebook.com/",
-    instagram: "https://www.instagram.com/",
-    linkedin: "https://www.linkedin.com/",
+    facebook: "",
+    instagram: "",
+    linkedin: "",
   },
 };
 
@@ -381,7 +384,7 @@ export const testimonials = [
 ];
 
 export const stats = [
-  { value: 25, suffix: " +", label: "Years of Experience" },
+  { value: 15, suffix: " +", label: "Years of Experience" },
   { value: 95, suffix: " %", label: "Projects Complete" },
   { value: 56, suffix: " +", label: "Our Certified Specialists" },
   { value: 750, suffix: " +", label: "Happy Clients" },

@@ -331,6 +331,24 @@ button { font: inherit; cursor: pointer; }
 .what-we-do__card li a:hover { color: var(--blue); }
 @media (max-width: 900px) { .what-we-do__grid { grid-template-columns: 1fr; } }
 
+/* ---------- FAQ ---------- */
+.faq__inner { max-width: 860px; }
+.faq__list { display: grid; gap: 12px; }
+.faq__item { border: 1px solid var(--line); border-radius: var(--radius); background: #fff; transition: border-color .2s, box-shadow .2s; }
+.faq__item[open] { border-color: var(--blue); box-shadow: var(--shadow); }
+.faq__item summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 22px; cursor: pointer; list-style: none;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary h3 { margin: 0; font-size: 15.5px; }
+.faq__item summary::after {
+  content: "+"; flex-shrink: 0; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--blue-50); color: var(--blue); font-size: 18px; font-weight: 600; transition: transform .25s, background .2s, color .2s;
+}
+.faq__item[open] summary::after { content: "−"; background: var(--blue); color: #fff; }
+.faq__item p { margin: 0; padding: 0 22px 20px; font-size: 14px; }
+
 /* ---------- Service categories ---------- */
 .section-intro { max-width: 680px; margin: 10px auto 0; font-size: 15px; }
 .category-nav { position: sticky; top: var(--header-h); z-index: 50; background: #fff; border-bottom: 1px solid var(--line); }

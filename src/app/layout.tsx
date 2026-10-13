@@ -45,6 +45,11 @@ export const metadata: Metadata = {
   },
   formatDetection: { telephone: true, email: true, address: true },
   category: "finance",
+  // Google Search Console "HTML tag" verification: set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+  // in Vercel to the content="..." value Google gives you.
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
+  }),
 };
 
 export const viewport: Viewport = {
@@ -74,7 +79,6 @@ const organizationLd = {
         areaServed: ["IN", "AE"],
         availableLanguage: ["English", "Malayalam"],
       })),
-      foundingDate: site.foundedISO,
       address: {
         "@type": "PostalAddress",
         streetAddress: `${site.address.building}, ${site.address.street}, ${site.address.locality}`,
@@ -84,10 +88,12 @@ const organizationLd = {
         addressCountry: site.address.countryCode,
       },
       areaServed: [
+        { "@type": "City", name: "Thiruvalla" },
+        { "@type": "AdministrativeArea", name: `${site.address.district} district, ${site.address.region}` },
         { "@type": "Country", name: "India" },
         { "@type": "Country", name: "United Arab Emirates" },
       ],
-      sameAs: Object.values(site.social),
+      ...(Object.values(site.social).some(Boolean) && { sameAs: Object.values(site.social).filter(Boolean) }),
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Accounting, Tax & GST and UAE Corporate Services",

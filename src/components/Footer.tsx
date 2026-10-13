@@ -3,12 +3,21 @@ import Logo from "./Logo";
 import { Facebook, Instagram, LinkedIn, Mail, MapPin, Phone } from "./Icons";
 import { fullAddress, site, telHref } from "@/lib/site";
 
+const socialProfiles = [
+  { href: site.social.facebook, label: "Facebook", Icon: Facebook },
+  { href: site.social.instagram, label: "Instagram", Icon: Instagram },
+  { href: site.social.linkedin, label: "LinkedIn", Icon: LinkedIn },
+].filter((p) => p.href);
+
 export function SocialLinks({ className = "" }: { className?: string }) {
+  if (!socialProfiles.length) return null;
   return (
     <ul className={`social ${className}`} aria-label="Social media">
-      <li><a href={site.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook /></a></li>
-      <li><a href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram /></a></li>
-      <li><a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><LinkedIn /></a></li>
+      {socialProfiles.map(({ href, label, Icon }) => (
+        <li key={label}>
+          <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}><Icon /></a>
+        </li>
+      ))}
     </ul>
   );
 }
@@ -20,8 +29,8 @@ export default function Footer() {
         <div className="footer__brand">
           <Logo variant="light" />
           <p>
-            Established in {site.founded}, AIONIOUS Management Solutions delivers accurate, timely, and
-            trusted financial services to individuals, startups, and businesses alike.
+            AIONIOUS Management Solutions delivers accurate, timely accounting, tax and GST services from
+            Thiruvalla (Tiruvalla), Pathanamthitta district – for clients across Kerala and the UAE.
           </p>
           <SocialLinks />
         </div>

@@ -10,6 +10,7 @@ import ServiceCard from "@/components/ServiceCard";
 import { ArrowUpRight, Check, Mail, Phone } from "@/components/Icons";
 import { serviceBySlug, serviceCategories, services, site, telHref, type Service } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
+import { serviceFaqs } from "@/lib/faqs";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -49,6 +50,7 @@ export default async function ServicePage({ params }: Props) {
   if (!service) notFound();
 
   const category = serviceCategories.find((c) => c.key === service.category)!;
+  const faqs = serviceFaqs[service.slug] ?? [];
   const related = category.slugs
     .filter((s) => s !== service.slug)
     .map(serviceBySlug)
@@ -145,6 +147,27 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
+      {faqs.length > 0 && (
+        <section className="section faq" aria-labelledby="faq-title">
+          <div className="container faq__inner">
+            <header className="section-head section-head--center">
+              <SectionTag>FAQs</SectionTag>
+              <h2 id="faq-title" className="h2">{service.title}: Common Questions</h2>
+            </header>
+            <div className="faq__list">
+              {faqs.map((f, i) => (
+                <details key={f.q} className="faq__item" open={i === 0}>
+                  <summary>
+                    <h3>{f.q}</h3>
+                  </summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {related.length > 0 && (
         <section className="section services-light" aria-labelledby="related-title">
           <div className="container">
@@ -163,6 +186,19 @@ export default async function ServicePage({ params }: Props) {
 
       <CtaBand />
       <JsonLd data={serviceLd} />
+      {faqs.length > 0 && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }}
+        />
+      )}
     </>
   );
 }
