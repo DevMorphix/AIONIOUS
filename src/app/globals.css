@@ -99,10 +99,12 @@ button { font: inherit; cursor: pointer; }
 .check-list svg { color: var(--blue); flex-shrink: 0; margin-top: 5px; }
 
 /* ---------- Logo ---------- */
-.logo { display: inline-flex; align-items: center; gap: 8px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; }
+.logo-mark { flex-shrink: 0; height: auto; display: block; }
 .logo__text { display: flex; flex-direction: column; line-height: 1; }
-.logo__name { font-size: 19px; font-weight: 700; letter-spacing: .04em; color: #2f3644; }
-.logo__sub { font-size: 7.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-top: 3px; }
+/* Colours sampled from the official logo artwork */
+.logo__name { font-size: 20px; font-weight: 600; letter-spacing: .05em; color: #5a6070; }
+.logo__sub { font-size: 7.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #348fce; margin-top: 4px; }
 .logo--light .logo__name { color: #fff; }
 .logo--light .logo__sub { color: #9cc7ee; }
 
